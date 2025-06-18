@@ -92,6 +92,7 @@ export class MemStorage implements IStorage {
     const user: User = { 
       ...insertUser, 
       id, 
+      role: insertUser.role || 'admin',
       createdAt: new Date() 
     };
     this.users.set(id, user);

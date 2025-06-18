@@ -20,6 +20,8 @@ export default function MainLayout({ children }: MainLayoutProps) {
     const handleResize = () => {
       if (window.innerWidth < 1024) {
         setIsCollapsed(true);
+      } else {
+        setIsCollapsed(false);
       }
     };
 
@@ -35,9 +37,10 @@ export default function MainLayout({ children }: MainLayoutProps) {
       
       <main className={cn(
         "pt-16 transition-all duration-300",
-        isCollapsed ? "ml-16" : "ml-280"
+        "lg:ml-72", // Always show full width on large screens
+        isCollapsed ? "ml-0" : "ml-0" // No margin on mobile when collapsed
       )}>
-        <div className="p-6">
+        <div className="p-4 lg:p-6">
           {children}
         </div>
       </main>
