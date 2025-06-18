@@ -92,8 +92,8 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
               <FormItem>
                 <FormLabel>Assign Technician</FormLabel>
                 <Select
-                  onValueChange={(value) => field.onChange(value ? parseInt(value) : undefined)}
-                  value={field.value?.toString()}
+                  onValueChange={(value) => field.onChange(value === "unassigned" ? undefined : parseInt(value))}
+                  value={field.value?.toString() || "unassigned"}
                 >
                   <FormControl>
                     <SelectTrigger>
@@ -101,7 +101,7 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="">Unassigned</SelectItem>
+                    <SelectItem value="unassigned">Unassigned</SelectItem>
                     {technicians.map((tech: any) => (
                       <SelectItem key={tech.id} value={tech.id.toString()}>
                         {tech.firstName} {tech.lastName}

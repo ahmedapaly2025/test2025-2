@@ -147,15 +147,17 @@ export default function Tasks() {
               {t('actions.new_task')}
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl">
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Create New Task</DialogTitle>
             </DialogHeader>
-            <TaskForm
-              onSubmit={(data) => createTaskMutation.mutate(data)}
-              isLoading={createTaskMutation.isPending}
-              technicians={technicians}
-            />
+            <div className="py-4">
+              <TaskForm
+                onSubmit={(data) => createTaskMutation.mutate(data)}
+                isLoading={createTaskMutation.isPending}
+                technicians={technicians}
+              />
+            </div>
           </DialogContent>
         </Dialog>
       </div>
@@ -272,17 +274,19 @@ export default function Tasks() {
 
       {/* Edit Task Dialog */}
       <Dialog open={!!editingTask} onOpenChange={() => setEditingTask(null)}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Edit Task</DialogTitle>
           </DialogHeader>
           {editingTask && (
-            <TaskForm
-              initialData={editingTask}
-              onSubmit={(data) => updateTaskMutation.mutate({ id: (editingTask as any).id, data })}
-              isLoading={updateTaskMutation.isPending}
-              technicians={technicians}
-            />
+            <div className="py-4">
+              <TaskForm
+                initialData={editingTask}
+                onSubmit={(data) => updateTaskMutation.mutate({ id: (editingTask as any).id, data })}
+                isLoading={updateTaskMutation.isPending}
+                technicians={technicians}
+              />
+            </div>
           )}
         </DialogContent>
       </Dialog>

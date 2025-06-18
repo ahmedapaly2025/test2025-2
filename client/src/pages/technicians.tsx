@@ -144,14 +144,16 @@ export default function Technicians() {
               {t('actions.add_technician')}
             </Button>
           </DialogTrigger>
-          <DialogContent className="max-w-2xl">
+          <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
               <DialogTitle>Add New Technician</DialogTitle>
             </DialogHeader>
-            <TechnicianForm
-              onSubmit={(data) => createTechnicianMutation.mutate(data)}
-              isLoading={createTechnicianMutation.isPending}
-            />
+            <div className="py-4">
+              <TechnicianForm
+                onSubmit={(data) => createTechnicianMutation.mutate(data)}
+                isLoading={createTechnicianMutation.isPending}
+              />
+            </div>
           </DialogContent>
         </Dialog>
       </div>
