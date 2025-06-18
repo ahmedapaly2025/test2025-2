@@ -354,19 +354,21 @@ export default function Technicians() {
 
       {/* Edit Technician Dialog */}
       <Dialog open={!!editingTechnician} onOpenChange={() => setEditingTechnician(null)}>
-        <DialogContent className="max-w-2xl">
+        <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
           <DialogHeader>
             <DialogTitle>Edit Technician</DialogTitle>
           </DialogHeader>
           {editingTechnician && (
-            <TechnicianForm
-              initialData={editingTechnician}
-              onSubmit={(data) => updateTechnicianMutation.mutate({ 
-                id: (editingTechnician as any).id, 
-                data 
-              })}
-              isLoading={updateTechnicianMutation.isPending}
-            />
+            <div className="py-4">
+              <TechnicianForm
+                initialData={editingTechnician}
+                onSubmit={(data) => updateTechnicianMutation.mutate({ 
+                  id: (editingTechnician as any).id, 
+                  data 
+                })}
+                isLoading={updateTechnicianMutation.isPending}
+              />
+            </div>
           )}
         </DialogContent>
       </Dialog>
