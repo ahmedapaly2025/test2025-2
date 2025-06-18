@@ -75,7 +75,183 @@ export class MemStorage implements IStorage {
       role: "admin",
       createdAt: new Date(),
     });
-    this.currentId = 2;
+
+    // Sample technicians data
+    this.technicians.set(1, {
+      id: 1,
+      firstName: "أحمد",
+      lastName: "محمد",
+      username: "ahmed_tech",
+      telegramId: "@ahmed_tech",
+      phoneNumber: "+966501234567",
+      isActive: true,
+      joinedAt: new Date(),
+    });
+
+    this.technicians.set(2, {
+      id: 2,
+      firstName: "محمد",
+      lastName: "علي",
+      username: "mohammed_fix",
+      telegramId: "@mohammed_fix",
+      phoneNumber: "+966507654321",
+      isActive: true,
+      joinedAt: new Date(),
+    });
+
+    this.technicians.set(3, {
+      id: 3,
+      firstName: "خالد",
+      lastName: "السعد",
+      username: "khalid_repair",
+      telegramId: "@khalid_repair",
+      phoneNumber: "+966509876543",
+      isActive: false,
+      joinedAt: new Date(),
+    });
+
+    // Sample tasks data
+    this.tasks.set(1, {
+      id: 1,
+      taskNumber: "T-2024-001",
+      title: "إصلاح تكييف مركزي",
+      description: "إصلاح وحدة التكييف المركزي في المكتب الرئيسي - مشكلة في ضاغط الهواء",
+      clientName: "شركة الأعمال المتقدمة",
+      clientPhone: "+966501111111",
+      location: "الرياض - حي العليا - مجمع الأعمال",
+      mapUrl: "https://maps.google.com/?q=24.7136,46.6753",
+      technicianId: 1,
+      status: "in_progress",
+      scheduledDate: "2024-06-19",
+      scheduledTimeFrom: "09:00",
+      scheduledTimeTo: "12:00",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    this.tasks.set(2, {
+      id: 2,
+      taskNumber: "T-2024-002",
+      title: "صيانة نظام تبريد",
+      description: "صيانة دورية لنظام التبريد في المستودع الرئيسي",
+      clientName: "مؤسسة التجارة الشاملة",
+      clientPhone: "+966502222222",
+      location: "جدة - حي الروضة - شارع الأمير سلطان",
+      mapUrl: "https://maps.google.com/?q=21.5433,39.1728",
+      technicianId: 2,
+      status: "completed",
+      scheduledDate: "2024-06-18",
+      scheduledTimeFrom: "14:00",
+      scheduledTimeTo: "17:00",
+      createdAt: new Date(Date.now() - 86400000),
+      updatedAt: new Date(),
+    });
+
+    this.tasks.set(3, {
+      id: 3,
+      taskNumber: "T-2024-003",
+      title: "تركيب وحدة تكييف جديدة",
+      description: "تركيب وحدة تكييف سبليت في المكتب الإداري",
+      clientName: "مكتب الاستشارات الهندسية",
+      clientPhone: "+966503333333",
+      location: "الدمام - حي الفيصلية - مجمع المكاتب",
+      mapUrl: "https://maps.google.com/?q=26.3927,50.0410",
+      technicianId: null,
+      status: "pending",
+      scheduledDate: "2024-06-20",
+      scheduledTimeFrom: "10:00",
+      scheduledTimeTo: "15:00",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    this.tasks.set(4, {
+      id: 4,
+      taskNumber: "T-2024-004",
+      title: "إصلاح عطل كهربائي",
+      description: "إصلاح عطل في الدائرة الكهربائية لوحدة التكييف",
+      clientName: "مطعم الأصالة",
+      clientPhone: "+966504444444",
+      location: "الخبر - الكورنيش - بجانب مارينا مول",
+      mapUrl: "https://maps.google.com/?q=26.2172,50.1971",
+      technicianId: 1,
+      status: "sent",
+      scheduledDate: "2024-06-19",
+      scheduledTimeFrom: "16:00",
+      scheduledTimeTo: "18:00",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    // Sample invoices data
+    this.invoices.set(1, {
+      id: 1,
+      invoiceNumber: "INV-2024-001",
+      taskId: 2,
+      technicianId: 2,
+      amount: "450.00",
+      status: "paid",
+      createdAt: new Date(Date.now() - 86400000),
+      updatedAt: new Date(),
+    });
+
+    this.invoices.set(2, {
+      id: 2,
+      invoiceNumber: "INV-2024-002",
+      taskId: 1,
+      technicianId: 1,
+      amount: "1300.00",
+      status: "pending",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    this.invoices.set(3, {
+      id: 3,
+      invoiceNumber: "INV-2024-003",
+      taskId: 4,
+      technicianId: 1,
+      amount: "275.00",
+      status: "pending",
+      createdAt: new Date(),
+      updatedAt: new Date(),
+    });
+
+    // Sample notifications
+    this.notifications.set(1, {
+      id: 1,
+      message: "تم تعيين مهمة جديدة: إصلاح تكييف مركزي",
+      type: "task_assigned",
+      isRead: false,
+      createdAt: new Date(),
+    });
+
+    this.notifications.set(2, {
+      id: 2,
+      message: "تم دفع فاتورة رقم INV-2024-001 بمبلغ 450 ريال",
+      type: "payment_received",
+      isRead: false,
+      createdAt: new Date(Date.now() - 3600000),
+    });
+
+    this.notifications.set(3, {
+      id: 3,
+      message: "تم إكمال مهمة صيانة نظام التبريد بنجاح",
+      type: "task_completed",
+      isRead: true,
+      createdAt: new Date(Date.now() - 7200000),
+    });
+
+    // Bot settings
+    this.botSettings = {
+      id: 1,
+      botToken: "",
+      isActive: false,
+      googleMapsApiKey: null,
+      updatedAt: new Date(),
+    };
+
+    this.currentId = 10;
   }
 
   // Users

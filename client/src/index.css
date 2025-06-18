@@ -99,6 +99,72 @@
   background: linear-gradient(135deg, hsl(239, 84%, 67%) 0%, hsl(271, 91%, 65%) 100%);
 }
 
+/* Status badge styles */
+.status-pending {
+  @apply bg-yellow-100 border-yellow-300 text-yellow-800;
+}
+
+.status-sent {
+  @apply bg-blue-100 border-blue-300 text-blue-800;
+}
+
+.status-accepted {
+  @apply bg-green-100 border-green-300 text-green-800;
+}
+
+.status-rejected {
+  @apply bg-red-100 border-red-300 text-red-800;
+}
+
+.status-in_progress {
+  @apply bg-purple-100 border-purple-300 text-purple-800;
+}
+
+.status-completed {
+  @apply bg-emerald-100 border-emerald-300 text-emerald-800;
+}
+
+.status-paid {
+  @apply bg-green-100 border-green-300 text-green-800;
+}
+
+.status-draft {
+  @apply bg-gray-100 border-gray-300 text-gray-800;
+}
+
+/* Dark mode status styles */
+.dark .status-pending {
+  @apply bg-yellow-900/20 border-yellow-600 text-yellow-400;
+}
+
+.dark .status-sent {
+  @apply bg-blue-900/20 border-blue-600 text-blue-400;
+}
+
+.dark .status-accepted {
+  @apply bg-green-900/20 border-green-600 text-green-400;
+}
+
+.dark .status-rejected {
+  @apply bg-red-900/20 border-red-600 text-red-400;
+}
+
+.dark .status-in_progress {
+  @apply bg-purple-900/20 border-purple-600 text-purple-400;
+}
+
+.dark .status-completed {
+  @apply bg-emerald-900/20 border-emerald-600 text-emerald-400;
+}
+
+.dark .status-paid {
+  @apply bg-green-900/20 border-green-600 text-green-400;
+}
+
+.dark .status-draft {
+  @apply bg-gray-900/20 border-gray-600 text-gray-400;
+}
+
 /* RTL Support */
 [dir="rtl"] {
   direction: rtl;
