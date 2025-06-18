@@ -37,8 +37,10 @@ export default function MainLayout({ children }: MainLayoutProps) {
       
       <main className={cn(
         "pt-16 transition-all duration-300",
-        "lg:ml-72", // Always show full width on large screens
-        isCollapsed ? "ml-0" : "ml-0" // No margin on mobile when collapsed
+        // Responsive margins based on sidebar state
+        isCollapsed 
+          ? "ml-0 lg:ml-16" // No margin on mobile, small margin on desktop when collapsed
+          : "ml-0 lg:ml-72"  // No margin on mobile, full margin on desktop when expanded
       )}>
         <div className="p-4 lg:p-6">
           {children}

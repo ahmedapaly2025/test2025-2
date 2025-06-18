@@ -56,7 +56,11 @@ export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
       <div className={cn(
         "fixed left-0 top-0 h-full bg-sidebar border-r border-sidebar-border transition-all duration-300 z-50",
         "lg:relative lg:translate-x-0",
-        isCollapsed ? "w-16 -translate-x-full lg:translate-x-0" : "w-72 translate-x-0"
+        // Mobile behavior
+        "lg:w-72", // Fixed width on desktop
+        isCollapsed 
+          ? "w-16 -translate-x-full lg:translate-x-0 lg:w-16" // Hidden on mobile, collapsed on desktop
+          : "w-72 translate-x-0" // Visible on mobile
       )}>
         {/* Header */}
         <div className="p-6 border-b border-sidebar-border">

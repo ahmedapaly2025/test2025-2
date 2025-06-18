@@ -117,6 +117,10 @@ export class MemStorage implements IStorage {
     const technician: Technician = { 
       ...insertTechnician, 
       id, 
+      lastName: insertTechnician.lastName || null,
+      username: insertTechnician.username || null,
+      phoneNumber: insertTechnician.phoneNumber || null,
+      isActive: insertTechnician.isActive || true,
       joinedAt: new Date() 
     };
     this.technicians.set(id, technician);
@@ -161,6 +165,8 @@ export class MemStorage implements IStorage {
       id, 
       taskNumber,
       status: "pending",
+      mapUrl: insertTask.mapUrl || null,
+      technicianId: insertTask.technicianId || null,
       createdAt: new Date(),
       updatedAt: new Date()
     };
@@ -231,6 +237,8 @@ export class MemStorage implements IStorage {
     const botSettings: BotSettings = {
       id: 1,
       ...settings,
+      isActive: settings.isActive || false,
+      googleMapsApiKey: settings.googleMapsApiKey || null,
       updatedAt: new Date()
     };
     this.botSettings = botSettings;
