@@ -149,7 +149,7 @@ export default function Tasks() {
           </DialogTrigger>
           <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
             <DialogHeader>
-              <DialogTitle>Create New Task</DialogTitle>
+              <DialogTitle>{t('task.create_new' as any)}</DialogTitle>
             </DialogHeader>
             <div className="py-4">
               <TaskForm

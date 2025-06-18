@@ -76,9 +76,9 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Task Title</FormLabel>
+                <FormLabel>{t('task.title')}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter task title" {...field} />
+                  <Input placeholder={t('task.title_placeholder')} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -90,18 +90,18 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
             name="technicianId"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Assign Technician</FormLabel>
+                <FormLabel>{t('task.assign_technician' as any)}</FormLabel>
                 <Select
                   onValueChange={(value) => field.onChange(value === "unassigned" ? undefined : parseInt(value))}
                   value={field.value?.toString() || "unassigned"}
                 >
                   <FormControl>
                     <SelectTrigger>
-                      <SelectValue placeholder="Select technician" />
+                      <SelectValue placeholder={t('task.select_technician' as any)} />
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="unassigned">Unassigned</SelectItem>
+                    <SelectItem value="unassigned">{t('task.unassigned' as any)}</SelectItem>
                     {technicians.map((tech: any) => (
                       <SelectItem key={tech.id} value={tech.id.toString()}>
                         {tech.firstName} {tech.lastName}
@@ -120,10 +120,10 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>Description</FormLabel>
+              <FormLabel>{t('task.description' as any)}</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Enter task description"
+                  placeholder={t('task.description_placeholder' as any)}
                   className="min-h-[100px]"
                   {...field}
                 />
@@ -139,9 +139,9 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
             name="clientName"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Client Name</FormLabel>
+                <FormLabel>{t('task.client_name' as any)}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter client name" {...field} />
+                  <Input placeholder={t('task.client_name_placeholder' as any)} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -153,9 +153,9 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
             name="clientPhone"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Client Phone</FormLabel>
+                <FormLabel>{t('task.client_phone' as any)}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter client phone" {...field} />
+                  <Input placeholder={t('task.client_phone_placeholder' as any)} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -169,9 +169,9 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
             name="location"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Location</FormLabel>
+                <FormLabel>{t('task.location' as any)}</FormLabel>
                 <FormControl>
-                  <Input placeholder="Enter location" {...field} />
+                  <Input placeholder={t('task.location_placeholder' as any)} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -183,9 +183,9 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
             name="mapUrl"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Google Maps URL (Optional)</FormLabel>
+                <FormLabel>{t('task.map_url' as any)}</FormLabel>
                 <FormControl>
-                  <Input placeholder="https://maps.google.com/..." {...field} />
+                  <Input placeholder={t('task.map_url_placeholder' as any)} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -199,7 +199,7 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
             name="scheduledDate"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Scheduled Date</FormLabel>
+                <FormLabel>{t('task.scheduled_date' as any)}</FormLabel>
                 <FormControl>
                   <Input type="date" {...field} />
                 </FormControl>
@@ -213,7 +213,7 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
             name="scheduledTimeFrom"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Start Time</FormLabel>
+                <FormLabel>{t('task.start_time' as any)}</FormLabel>
                 <FormControl>
                   <Input type="time" {...field} />
                 </FormControl>
@@ -227,7 +227,7 @@ export default function TaskForm({ initialData, onSubmit, isLoading, technicians
             name="scheduledTimeTo"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>End Time</FormLabel>
+                <FormLabel>{t('task.end_time' as any)}</FormLabel>
                 <FormControl>
                   <Input type="time" {...field} />
                 </FormControl>
