@@ -56,10 +56,7 @@ export default function Topbar({ onSidebarToggle, isCollapsed }: TopbarProps) {
   };
 
   return (
-    <div className={cn(
-      "fixed top-0 right-0 bg-card/95 backdrop-blur-sm border-b border-border z-40 transition-all duration-300",
-      isCollapsed ? "left-16" : "left-280"
-    )}>
+    <div className="bg-card/95 backdrop-blur-sm border-b border-border z-40 w-full">
       <div className="flex items-center justify-between h-16 px-6">
         <div className="flex items-center space-x-4">
           <Button
@@ -67,6 +64,15 @@ export default function Topbar({ onSidebarToggle, isCollapsed }: TopbarProps) {
             size="sm"
             onClick={onSidebarToggle}
             className="lg:hidden"
+          >
+            <Menu className="h-5 w-5" />
+          </Button>
+          
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={onSidebarToggle}
+            className="hidden lg:flex"
           >
             <Menu className="h-5 w-5" />
           </Button>

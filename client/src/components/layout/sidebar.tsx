@@ -45,22 +45,92 @@ export default function Sidebar({ isCollapsed, onToggle }: SidebarProps) {
 
   return (
     <>
-      {/* Mobile overlay */}
+      {/* Mobile sidebar */}
       {!isCollapsed && (
-        <div 
-          className="fixed inset-0 bg-black/50 z-40 lg:hidden"
-          onClick={onToggle}
-        />
+        <>
+          <div 
+            className="fixed inset-0 bg-black/50 z-40 lg:hidden"
+            onClick={onToggle}
+          />
+          <div className="fixed left-0 top-0 h-full w-72 bg-sidebar border-r border-sidebar-border z-50 lg:hidden flex flex-col">
+            {/* Mobile Header */}
+            <div className="p-6 border-b border-sidebar-border">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 gradient-bg rounded-lg flex items-center justify-center">
+                  <Zap className="h-6 w-6 text-white" />
+                </div>
+                <div>
+                  <h2 className="text-lg font-semibold text-sidebar-foreground">TeleBot Manager</h2>
+                  <p className="text-xs text-sidebar-foreground/60">Dashboard v2.0</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Mobile Navigation */}
+            <ScrollArea className="flex-1 px-4 py-6">
+              <nav className="space-y-2">
+                {navigation.map((item) => {
+                  const isActive = location === item.href;
+                  const Icon = item.icon;
+                  
+                  return (
+                    <Link key={item.href} href={item.href}>
+                      <Button
+                        variant={isActive ? "default" : "ghost"}
+                        className={cn(
+                          "w-full justify-start",
+                          isActive && "bg-sidebar-primary text-sidebar-primary-foreground",
+                          !isActive && "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent"
+                        )}
+                        onClick={onToggle}
+                      >
+                        <Icon className="h-5 w-5 mr-3" />
+                        <span>{t(item.name as any)}</span>
+                        {item.badge && (
+                          <Badge variant="secondary" className="ml-auto">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </Button>
+                    </Link>
+                  );
+                })}
+                
+                {/* Separator */}
+                <div className="pt-4 mt-4 border-t border-sidebar-border">
+                  {secondaryNavigation.map((item) => {
+                    const isActive = location === item.href;
+                    const Icon = item.icon;
+                    
+                    return (
+                      <Link key={item.href} href={item.href}>
+                        <Button
+                          variant={isActive ? "default" : "ghost"}
+                          className={cn(
+                            "w-full justify-start mb-2",
+                            isActive && "bg-sidebar-primary text-sidebar-primary-foreground",
+                            !isActive && "text-sidebar-foreground/70 hover:text-sidebar-foreground hover:bg-sidebar-accent"
+                          )}
+                          onClick={onToggle}
+                        >
+                          <Icon className="h-5 w-5 mr-3" />
+                          <span>{t(item.name as any)}</span>
+                        </Button>
+                      </Link>
+                    );
+                  })}
+                </div>
+              </nav>
+            </ScrollArea>
+          </div>
+        </>
       )}
       
+      {/* Desktop sidebar */}
       <div className={cn(
-        "fixed left-0 top-0 h-full bg-sidebar border-r border-sidebar-border transition-all duration-300 z-50",
-        "lg:relative lg:translate-x-0",
-        // Mobile behavior
-        "lg:w-72", // Fixed width on desktop
-        isCollapsed 
-          ? "w-16 -translate-x-full lg:translate-x-0 lg:w-16" // Hidden on mobile, collapsed on desktop
-          : "w-72 translate-x-0" // Visible on mobile
+        "h-full bg-sidebar border-r border-sidebar-border transition-all duration-300",
+        "hidden lg:flex lg:flex-col", // Hidden on mobile, visible on desktop
+        isCollapsed ? "lg:w-16" : "lg:w-72"
       )}>
         {/* Header */}
         <div className="p-6 border-b border-sidebar-border">
