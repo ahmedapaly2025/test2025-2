@@ -13,6 +13,9 @@ import Technicians from "@/pages/technicians";
 import Settings from "@/pages/settings";
 import Invoices from "@/pages/invoices";
 import Reports from "@/pages/reports";
+import LanguageSettings from "@/pages/language-settings";
+import ActivityHistory from "@/pages/activity-history";
+import BackupRestore from "@/pages/backup-restore";
 import NotFound from "@/pages/not-found";
 import { useEffect, useState } from "react";
 
@@ -27,6 +30,9 @@ function AuthenticatedApp() {
         <Route path="/settings" component={Settings} />
         <Route path="/invoices" component={Invoices} />
         <Route path="/reports" component={Reports} />
+        <Route path="/translation" component={LanguageSettings} />
+        <Route path="/history" component={ActivityHistory} />
+        <Route path="/backup" component={BackupRestore} />
         <Route component={NotFound} />
       </Switch>
     </MainLayout>

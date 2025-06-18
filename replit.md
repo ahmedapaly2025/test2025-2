@@ -120,6 +120,10 @@ The application uses five main entities:
 ```
 Changelog:
 - June 18, 2025. Initial setup
+- June 18, 2025. Fixed responsive sidebar navigation for all screen sizes
+- June 18, 2025. Resolved authentication issues preventing data loading
+- June 18, 2025. Added missing secondary pages: Language Settings, Activity History, Backup & Restore
+- June 18, 2025. Implemented mobile-friendly overlay system for sidebar
 ```
 
 ## User Preferences
